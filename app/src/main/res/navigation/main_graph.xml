@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.merveoz.homework1.ui.Home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/HometoPersonal"
+            app:destination="@id/personalinfoFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/customFragment"
+        android:name="com.merveoz.homework1.ui.next.CustomFragment"
+        android:label="fragment_custom"
+        tools:layout="@layout/fragment_custom" >
+        <action
+            android:id="@+id/CustomtoResult"
+            app:destination="@id/resultFragment"
+            app:popUpTo="@id/customFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="PersonalObject"
+            app:argType="com.merveoz.homework1.data.model.PersonalInformationModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/personalinfoFragment"
+        android:name="com.merveoz.homework1.ui.next.PersonalinfoFragment"
+        android:label="fragment_personalinfo"
+        tools:layout="@layout/fragment_personalinfo" >
+        <action
+            android:id="@+id/PersonaltoCustom"
+            app:destination="@id/customFragment"
+            app:popUpTo="@id/personalinfoFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="nameObject"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.merveoz.homework1.ui.next.ResultFragment"
+        android:label="fragment_result"
+        tools:layout="@layout/fragment_result" >
+        <argument
+            android:name="questionObject"
+            app:argType="com.merveoz.homework1.data.model.QuestionModel" />
+    </fragment>
+    <argument
+        android:name="nameObject"
+        app:argType="com.merveoz.homework1.data.model.PersonalInformationModel" />
+</navigation>
